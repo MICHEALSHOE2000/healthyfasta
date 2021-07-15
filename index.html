@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Healthyfast!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+  </head>
+  <body>
+
+    <!--modal--> 
+    <div class="modal fade"  id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog  modal-dialog-centered modal-ku">
+        <div class="modal-content" style="border-radius: 30px;">
+          
+          <div class="modal-body p-3">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <img id="imgpop" src="data:image/jpeg;base64,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" style="width: 100%; border-radius: 30px;" alt="">
+                    
+                </div>
+                <div class="col-12 col-md-6">
+                
+                  <h2 class="mt-5"><strong>Masker kain</strong></h2>
+                  <hr>
+                <p class="mt-3" style="text-align: justify;">  
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, non. Architecto nesciunt porro magnam quaerat soluta iste? Nemo, explicabo blanditiis, nisi vel voluptatibus nostrum, vitae recusandae veritatis molestiae earum obcaecati?
+                </p>
+                <div class=" d-flex justify-content-left mt-2" data-aos="fade-up">
+                  <img id="prodpop-1" type="button" class="prod-content shadow m-1 s" src="./assets/img/Packaging.png" width="90px"  alt="Avatar" class="image" >
+                  <img id="prodpop-2" type="button" class="prod-content shadow m-1" src="./assets/img/Packaging.png" width="90px"  alt="Avatar" class="image" >
+                  <img id="prodpop-3" type="button" class="prod-content shadow m-1" src="./assets/img/Packaging.png" width="90px"  alt="Avatar" class="image"  >
+          
+                </div>
+                      
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-yello rounded-pill px-5" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="preload">
+
+    </div>
+    <nav class="navbar bfscroll sticky-top navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span class="mr-3"> <img class="mx-3" width="50px" src="./assets/img/logo.png" alt="" srcset=""> </span>
+          Healthyfast!</a>
+        <button class="border-0 navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto ">
+            <li class="nav-item">
+              <div class="input-group">
+                <div class="form-outline">
+                  <input id="code" type="search" placeholder="Check Maskermu" id="form1" class="form-control" />
+                                  </div>
+                <button id="auth" style="background-color: orange; color: white;" type="button"  class="btn ">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="first pt-5">
+      <div class="container pt-5">
+        <div class="">
+        <div class="navigation d-flex justify-content-center" data-aos="fade-up">
+          <button id="prod-destroy" class="btn rounded px-3 mx-3">Profile</button>
+          <button class="btn rounded px-3 mx-3">Product</button>
+          <button class="btn rounded px-3 mx-3">Order</button>
+          <button class="btn rounded px-3 mx-3">About Us</button>          
+        </div>
+        <p class="header-txt mt-5">Healthyfast!</p>
+        <p style="text-align: center;">healthy food is the best food<br>Menyediakan bahan makanan segar partai besar maupun kecil</p>
+        
+      </div>
+    </div>
+     
+    </section>
+    <section class="second-opt">
+      <div class="container p-5">
+        <label data-aos="fade-up" class="label-tag d-flex justify-content-center mx-5">
+          <span>MASNANO</span>
+        </label>
+        <br>
+        <br>
+        <div class="row p-3">
+        <!--
+        <div class="col-12 col-md-6 small-phone d-flex justify-content-end" style="max-height: 300px; overflow-y: hidden; display: none;">
+          <img style="height: 1000px;" src="https://whatsappbrand.com/wp-content/themes/whatsapp-brc/images/chat-thumb-android-1.png" alt="">
+        </div>  
+        -->
+        <div class="col-12 col-md-6 col-sm-12 ">
+        <div class="d-flex ml-5 max-box" data-aos="fade-up">
+          <img src="https://prog-8.com/assets/packs/dist/images/hitsuji_caption_image-988624202b2e46113477..png" alt="">
+          <div class="bubble talk-bubble tri-right left-top ">
+            <div class="talktext">
+              <p>Kenapa harus Healthyfast??</p>
+            </div>
+          </div>  
+        </div>
+        <div class="d-flex ml-5 max-box justify-content-end  " data-aos="fade-up">
+          <div class="bubble talk-bubble tri-right right-top">
+            <div class="talktext">
+              <p style="text-align: right;">Lah kenapa engga ! dengan healthy fast kamu bisa mendapatkan bahan pokok dengan cepat dan tentunya masih fresh dalam satu kali klick </p>
+            </div>
+          </div> 
+          <img  src="https://prog-8.com/assets/packs/dist/images/hitsuji_caption_image-988624202b2e46113477..png" alt="">
+        </div>
+        
+        <div class="d-flex ml-1 max-box justify-content-end  " data-aos="fade-up">
+          <div style="width: 100%;" class="bubble talk-bubble tri-right">
+            <div class="talktext">
+              <iframe  src="https://www.youtube.com/embed/kiOUAsUGEuA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div> 
+         
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-sm-6 big-phone d-flex justify-content-end" data-aos="fade-up">
+        <img  src="https://whatsappbrand.com/wp-content/themes/whatsapp-brc/images/chat-thumb-android-1.png" alt="">
+      </div>
+
+
+    </div>
+      </div>
+    </section>
+
+    <section class="third">
+      <div class="container p-5">
+        <label data-aos="fade-up"class="mb-5 label-tag d-flex justify-content-center mx-5 mb-3">
+          <span>Our Product</span>
+        </label>
+        <div class="row">
+          <div class="col-12 col-md-6 col-sm-12 mb-5">
+            <div class="container-pacakge shadow" style="border-radius: 20px;" data-aos="fade-up">
+              <img src="./assets/img/Packaging.png" alt="Avatar" class="image" style="width:100%; border-radius: 20px;">
+              <div class="middle">
+                <div class="text">
+                  <p style="text-align: center;"> Setiap satu kotak berisi<br>1 item masker kain </p>
+                  <button class="btn-primary btn">Beli Sekarang</button>
+
+                </div>
+              
+              </div>
+             
+            </div>
+          </div>
+          <div  class="product col-12 col-md-6 col-sm-12 mb-5 d-flex align-items-center flex-column">
+            <h5 data-aos="fade-up" class="my-3 label-tag rounded" id="head-name">produk kami</h5>
+            <div class=" d-flex justify-content-center" data-aos="fade-up">
+            <img id="prod-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"  class="prod-content shadow m-1" src="./assets/img/Packaging.png" width="30%"  alt="Avatar" class="image" >
+            <img id="prod-2" class="prod-content shadow m-1" src="./assets/img/Packaging.png" width="30%"  alt="Avatar" class="image" >
+            <img id="prod-3" class="prod-content shadow m-1" src="./assets/img/Packaging.png" width="30%"  alt="Avatar" class="image"  >
+          </div>
+          <div class="p-3 mt-3"  style="width: 100%; border-radius: 0;">
+          <hr>
+          <p style="letter-spacing: 0.5; font-size: 20px;" palegreen;">Tentukan sendiri pilihan maskermu !!</p>
+          <button style="display: inline; border-radius: 0;" class="p-3 btn btn-yello">get it now  <i class="ml-5 fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        </div>
+     
+    </div>
+    </section>
+
+    <section class="order py-5">
+      <div class="container">
+        <label data-aos="fade-up"class="mb-5 label-tag d-flex justify-content-center mx-5 mb-3">
+          <span>Make Order</span>
+        </label>
+        <div class="card m-5 p-5 bg-white shadow rounded">
+          <div class="row mb-3">
+            <div class="col-6">
+              <select class="form-control" id="product-list">
+                <option>bawang</option>
+                <option>pakcoy</option>
+                <option>wortel</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <select class="form-control" id="product-sum">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="col-2">
+              <button id="addBtn" style="display: inline; border-radius: 0;" class=" btn btn-yello">Add</button>
+              
+            </div>
+          </div>
+          <div class="order-item my-3">         
+            <h5>Daftar belanja</h5>   
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col-4">Produk</th>
+                  <th scope="col-4">Jumlah</th>
+                  
+                </tr>
+              </thead>
+              <tbody class="daftar-belanja">
+                
+                
+              </tbody>
+            </table>
+          </div>
+
+            <input type="text" class="form-control mb-3" placeholder="Nama" name="alamat" id="">
+            <input type="text" class="form-control mb-3" placeholder="alamat" name="alamat" id="">
+            <input type="text" class="form-control mb-3" placeholder="nomor telefon" name="alamat" id="">
+            <textarea class="form-control mb-3" placeholder="detail alamat" name="alamat" id=""></textarea>
+            <button style="display: inline; border-radius: 0;" class="p-3 btn-order btn btn-yello">Order  <i class="ml-5 fas fa-chevron-right"></i></button>
+          
+        </div>
+      </div>
+    </section>
+  
+    
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <div class="container tittle pt-3">
+    <label data-aos="fade-up"class="my-5 label-tag d-flex justify-content-center mx-5">
+      <span>about us</span>
+    </label>
+  </div>
+  <section class="mt-5">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4 p-5">
+          <!-- Content -->
+          <img src="https://d18en44nkeqroq.cloudfront.net/paths/node/top_image.svg" alt="" srcset="">
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    <p><i class="fas fa-search"></i> Temukan produk kami di  </p>
+    </div>
+  <!-- Copyright -->
+</footer>
+  
+<!-- Footer -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/xhrequst.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+   <script>
+      //loading animation
+      var pre = $('#preload')
+      pre.css('display','block')
+      $(window).on("load",function(){
+        pre.fadeOut(1000)
+      })
+      $(function() {
+        var nav = $('nav')
+        $(window).scroll(function () {
+
+          var scroll = $(window).scrollTop();
+          if (scroll >= 155) {
+            
+            nav.removeClass('bfscroll')
+            .addClass('afscroll')
+           
+          }else{
+            
+            nav.removeClass('afscroll')
+            .addClass('bfscroll')
+          }
+
+        })
+      });
+      
+    </script>
+    <script>
+      //pagination
+      $(document).ready(function(){
+    })
+
+    $('.paginationjs-page').click(function(){
+        console.log("something");
+        $('.card-body').fadeIn(1000);
+      })
+    
+      function changetxthead(obj,prodname){
+        obj.mouseover(function(){
+        $("#head-name").text(prodname);
+        });
+        obj.mouseleave(function(){
+        $("#head-name").text("Produk kami");
+        });    
+      }
+
+      function prodonclick(obj, content){
+        obj.click(function(){
+          showDetail(content);
+          }); 
+      }
+
+      function showDetail(content){
+
+      }
+
+      var txt1 = $("#prod-1");
+      var txt2 = $("#prod-2");
+      var txt3 = $("#prod-3");
+      changetxthead(txt1,"produk satu");
+      changetxthead(txt2,"produk dua");
+      changetxthead(txt3,"produk tiga");
+      prodonclick(txt1, "ini sesuatu");
+      prodonclick(txt2, "ini sesuatu");
+      prodonclick(txt3, "ini sesuatu");
+      
+      $("#prod-destroy").click(function(){
+        console.log("anjing lu");
+      });  
+
+      $('#auth').click(function(){
+        var codeval = $('#code').val();
+        const data ={ code: codeval }
+        axiosPost(url+'/auth', data).then(data=>{
+        console.log(data);
+          if(data!=null){
+            Swal.fire({
+  title: 'Valid!',
+  text: data.message,
+  imageUrl: 'https://unsplash.it/400/200',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
+          }else{
+            Swal.fire({
+  title: 'Invalid!',
+  text: "code not valid",
+  imageUrl: 'https://unsplash.it/400/200',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})          
+          }
+      })
+      })
+  $("#addBtn").click(function(){
+    $(".daftar-belanja").append(
+      '<tr>'+
+                  '<th scope="row"></th>'
+                  +'<td>'+ $("#product-list").val() +'</td>'+
+                  '<td>'+$("#product-sum").val()+'</td>'
+                +'</tr>'
+    )
+  })
+$(".btn-order").click(function(){
+  Swal.fire({
+  title: 'OOPS!',
+  text: "kami belum melayani order, tunggu yaa !",
+  imageUrl: 'https://unsplash.it/400/200',
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: 'Custom image',
+})
+})
+  $(".del-prod").click(function(){
+    console.log("asu bajingan")
+  });
+  </script>
+  
+  </body>
+</html>
